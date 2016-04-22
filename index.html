@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Multiscale complex Genomics: DNA Sequence-Flexibility relationship from microsecond-scale, tetranucleotide-complete, state-of-the-art MD simulations." />
+    <meta name="author" content="The MuG project" />
+    <link rel="icon" href="favicon.ico" />
+    
+    <title>DNA Sequence-dependent flexibility</title>
+    
+    <script type="text/javascript" src="SpryAssets/SpryMenuBar.js"></script>
+    <script src="js/vendor/d3.v3.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/popdda.js"></script>
+    <link href="css/MuG.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  
+  <body>
+    
+    <div id="container">
+      
+      <!-- HEADER: MuG logo -->
+      <div id="header">
+	<p align="left"><img src="images/topWeb.png" alt="MuG" width="900" height="124" /></p>
+	<p align="center"><strong>DNA Sequence-Flexibility relationship from microsecond-scale, tetranucleotide-complete, state-of-the-art MD simulations</strong>. </p>
+      </div>
+      <div id="menu">
+	<ul id="MenuBar1" class="MenuBarHorizontal">
+	  <li><a href="#intro" class="menuItem">Introduction</a></li>
+	  <li><a href="#flexibility" class="menuItem">Flex Browser</a></li>
+	</ul>
+      </div>
+      <div style='clear:both'></div>
+      
+      <!-- Main content -->
+      <div id="content">
+	
+	<div id="intro"><a href="intro"></a>
+	  <img src="images/image1.jpeg" align="right" />
+	  <p>
+	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+	    at purus nibh. Cras metus nulla, vestibulum in auctor ac,
+	    fermentum vitae tellus. Donec sed aliquam nisl. Sed eu leo id
+	    est pretium euismod. Nulla id justo at mi venenatis
+	    volutpat. Fusce nisi leo, placerat id condimentum a, accumsan
+	    vitae tortor. Nunc magna nunc, venenatis nec elementum eu,
+	    ultrices in sem. Maecenas tincidunt semper molestie. Nulla nec
+	    neque sit amet libero molestie feugiat. Cras id metus
+	    velit. Lorem ipsum dolor sit amet, consectetur adipiscing
+	    elit. Nullam lobortis arcu non leo porta ut euismod ante
+	    luctus. Praesent elementum sodales dolor id
+	    scelerisque.</p>
+	  <img src="images/image2.jpeg" align="left" />
+	  <p>Etiam sed velit tellus, eget aliquam nisi. Suspendisse potenti. Duis
+	    at augue purus. Lorem ipsum dolor sit amet, consectetur
+	    adipiscing elit. Etiam semper sapien congue lorem tristique
+	    nec bibendum velit tincidunt. Maecenas faucibus sollicitudin
+	    arcu, sed tincidunt nunc fermentum ac. Lorem ipsum dolor sit
+	    amet, consectetur adipiscing elit. Aliquam felis turpis,
+	    rutrum nec tincidunt nec, imperdiet quis tortor. Sed sit amet
+	    arcu vel orci porttitor elementum.</p><p>Vivamus eu elit
+	    augue. Donec viverra vehicula fermentum. Curabitur vitae
+	    tellus id mi sodales posuere vel cursus ligula. Proin quis
+	    risus arcu. Etiam purus dui, laoreet at mattis non, pretium et
+	    orci. Ut nec rhoncus neque. Aenean id risus ac neque congue
+	    suscipit. Sed bibendum quam nec felis aliquet in tempus enim
+	    adipiscing.</p><p>Aenean libero sem, ornare sed adipiscing quis,
+	    blandit a nibh. Proin quis sem urna. Vivamus id neque turpis. Aliquam
+	    erat volutpat. </p> 
+	</div>
+	
+	<div id="matrix-row">
+	  <div id="matrix"><a href="flexibility"></a>
+	    <script type="text/javascript">
+	      popdda("#matrix", "abc.tsv")
+	    </script>
+	  </div>
+	</div>
+	<div id="stiffness">
+	</div>
+      </div>
+	
+      <!-- FOOTER: MuG info -->
+      <div id="footer">
+	<table width="100%" cellpadding="4">
+	  <tr>
+            <td><img src="images/flag_yellow_high.jpg" alt="EU Logo" width="78" height="51" /></td>
+            <td>This project has  received funding from the European Union's Horizon 2020 research and innovation  programme under grant agreement No 676556.</td>
+	  </tr>
+	</table>
+      </div>
+	
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+img {margin: 10px}
+p {margin: 10px}
+
+#matrix {
+    margin: auto;
+}
+#matrix-row {
+    text-align: center;
+}
+
+rect.cell {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+rect.cell:hover {
+    stroke-width: 3px;
+}
+
+rect.cell.selected {
+    stroke-width: 3px;
+    stroke: red;
+}
+
+.cb rect {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.cblabel {
+    font-size: 8pt;
+}
