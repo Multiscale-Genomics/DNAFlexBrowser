@@ -60,16 +60,16 @@ function popdda(id, tsv) {
        # 36 35 34 33 32 31 30 29 28 27 26 25 24 23 22 21 20 19
        
        for abc in libabc.ABC:
-       seq = "GC%s%s%s%sGC"%(abc[2:],abc,abc,abc)
-       for i in range(libabc.ABC_locations[abc][0],
-       libabc.ABC_locations[abc][1]+1):
-       j = i-1
-       wtet = seq[j:j+4]
-       ctet = libabc.wcc(wtet)
-       wi = libabc.seq2idx(wtet)
-       ci = libabc.seq2idx(ctet)
-       print "%4s %4s %2d %2d %2d"%(wtet, abc, j+1, wi[0], wi[1])
-       print "%4s %4s %2d %2d %2d"%(ctet, abc, 36-j, ci[0], ci[1])
+           seq = "GC%s%s%s%sGC"%(abc[2:],abc,abc,abc)
+           for i in range(libabc.ABC_locations[abc][0],
+               libabc.ABC_locations[abc][1]+1):
+               j = i-1
+               wtet = seq[j:j+4]
+               ctet = libabc.wcc(wtet)
+               wi = libabc.seq2idx(wtet)
+               ci = libabc.seq2idx(ctet)
+               print "%4s %4s %2d %2d %2d"%(wtet, abc, j+1, wi[0], wi[1])
+               print "%4s %4s %2d %2d %2d"%(ctet, abc, 36-j, ci[0], ci[1])
 *****/
     var _this = this;
     d3.tsv(
