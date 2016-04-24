@@ -37,7 +37,7 @@
       <!-- Main content -->
       <div id="content">
 	
-	<div id="intro"><a href="intro"></a>
+	<div id="intro">
 	  <img src="images/image1.jpeg" align="right" />
 	  <p>
 	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -71,17 +71,35 @@
 	    erat volutpat. </p> 
 	</div>
 	
-	<div id="matrix-row">
-	  <div id="matrix"><a href="flexibility"></a>
+	<div id="flexibility">
+	  <h3>Average</h3>
+	  <div id="matrix">
 	    <script type="text/javascript">
-	      popdda("#matrix", "abc.tsv")
+              var mat = popdda("#matrix", "abc.tsv");
 	    </script>
 	  </div>
+	  <div id="selector">
+	    <img src="images/helicalParamsBPS.png"  align="right" border="0" usemap="#helicalParamsBPS_Map" />
+	    <br/>
+	    <br/>
+	    <span>[Image courtesy of Curves+]</span>
+	  </div>
 	</div>
+	
 	<div id="stiffness">
+	  <h3>Stiffness</h3>
 	</div>
       </div>
-	
+
+      <map name="helicalParamsBPS_Map">
+	<area shape="rect" coords="1,0,109,87" title="Show Averages: Shift" 		href="javascript:colorby('shift', 	[-1.0, 1.0]);" />
+	<area shape="rect" coords="112,3,247,92" title="Show Averages: Slide" 	href="javascript:colorby('slide', 	[-1.5, 0.5]);" />
+	<area shape="rect" coords="248,1,377,89" title="Show Averages: Rise" 	href="javascript:colorby('rise', 	[+2.6, 3.8]);" />
+	<area shape="rect" coords="1,91,105,186" title="Show Averages: Tilt" 	href="javascript:colorby('tilt', 		[-5.0, 5.0]);" />
+	<area shape="rect" coords="108,92,246,185" title="Show Averages: Roll" 	href="javascript:colorby('roll', 	[-5.0, 15]);" />
+	<area shape="rect" coords="247,91,376,186" title="Show Averages: Twist"  href="javascript:colorby('twist', 	[+20, 40]);" />
+      </map>      
+      
       <!-- FOOTER: MuG info -->
       <div id="footer">
 	<table width="100%" cellpadding="4">

@@ -2,31 +2,50 @@ img {margin: 10px}
 p {margin: 10px}
 
 #matrix {
+    float: left;
     margin: auto;
-}
-#matrix-row {
-    text-align: center;
+    padding: 2.5% 0;
+    background: #fafafa;
 }
 
+#selector {
+    text-align: right;
+    padding: 0 4% 0 0;
+    clear: right;
+}
+
+#selector img {
+    margin: 0;
+}
+
+#selector br {
+    clear: right;
+}
+
+#stiffness {
+    clear: both;
+}
+
+/* SVG */
 rect.cell {
     stroke: black;
     stroke-width: 1px;
 }
 
 rect.cell:hover {
-    stroke-width: 3px;
+    stroke-width: 0px;
 }
 
 rect.cell.selected {
-    stroke-width: 3px;
-    stroke: red;
-}
-
-.cb rect {
     stroke: black;
-    stroke-width: 1px;
+    stroke-width: 3px;
 }
 
-.cblabel {
+.cbrect {
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+.cbtick {
     font-size: 8pt;
 }
