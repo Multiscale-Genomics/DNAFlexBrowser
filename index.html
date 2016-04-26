@@ -38,67 +38,129 @@
       <div id="content">
 	
 	<div id="intro">
-	  <img src="images/image1.jpeg" align="right" />
+	  <!-- <img src="images/image1.jpeg" align="right" /> -->
 	  <p>
-	    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-	    at purus nibh. Cras metus nulla, vestibulum in auctor ac,
-	    fermentum vitae tellus. Donec sed aliquam nisl. Sed eu leo id
-	    est pretium euismod. Nulla id justo at mi venenatis
-	    volutpat. Fusce nisi leo, placerat id condimentum a, accumsan
-	    vitae tortor. Nunc magna nunc, venenatis nec elementum eu,
-	    ultrices in sem. Maecenas tincidunt semper molestie. Nulla nec
-	    neque sit amet libero molestie feugiat. Cras id metus
-	    velit. Lorem ipsum dolor sit amet, consectetur adipiscing
-	    elit. Nullam lobortis arcu non leo porta ut euismod ante
-	    luctus. Praesent elementum sodales dolor id
-	    scelerisque.</p>
-	  <img src="images/image2.jpeg" align="left" />
-	  <p>Etiam sed velit tellus, eget aliquam nisi. Suspendisse potenti. Duis
-	    at augue purus. Lorem ipsum dolor sit amet, consectetur
-	    adipiscing elit. Etiam semper sapien congue lorem tristique
-	    nec bibendum velit tincidunt. Maecenas faucibus sollicitudin
-	    arcu, sed tincidunt nunc fermentum ac. Lorem ipsum dolor sit
-	    amet, consectetur adipiscing elit. Aliquam felis turpis,
-	    rutrum nec tincidunt nec, imperdiet quis tortor. Sed sit amet
-	    arcu vel orci porttitor elementum.</p><p>Vivamus eu elit
-	    augue. Donec viverra vehicula fermentum. Curabitur vitae
-	    tellus id mi sodales posuere vel cursus ligula. Proin quis
-	    risus arcu. Etiam purus dui, laoreet at mattis non, pretium et
-	    orci. Ut nec rhoncus neque. Aenean id risus ac neque congue
-	    suscipit. Sed bibendum quam nec felis aliquet in tempus enim
-	    adipiscing.</p><p>Aenean libero sem, ornare sed adipiscing quis,
-	    blandit a nibh. Proin quis sem urna. Vivamus id neque turpis. Aliquam
-	    erat volutpat. </p> 
+	    The specific sequence of bases that constitute a DNA molecule
+	    influence significantly its 
+	    properties, in particular its structure and its
+	    flexibility. These effects are expected to play an
+	    important role in how proteins and drugs interact with
+	    DNA, as well as in the design and optimisation of
+	    DNA-based nanomaterials. Indeed, a number of proteins have
+	    been confirmed to rely on the structure and fluctations of
+	    DNA to recognise their target binding sequence. Specific
+	    protein binding to DNA is vital for a number of
+	    fundamental cellular processes, such as DNA replication
+	    and repair, chromatin compaction and transcription
+	    regulation.
+	  </p>
+	  <!-- <img src="images/image2.jpeg" align="left" /> -->
+	  <p>
+	    Molecular Dynamics (MD) simulations have been used to
+	    integrate experimental data in order to make systematic
+	    studies of how sequence affects DNA. In particular, the
+	    Ascona B-DNA Consortium (or
+	    <a href="https://bisi.ibcp.fr/ABC">ABC</a>) has pioneered
+	    this field (Beveridge et al., 2004; Dixit et al., 2005) and managed to recently obtain
+	    microsecond-scale MD trajectories of a purposely designed set of
+	    oligomers, which provides complete information on DNA
+	    sequence effects up to tetranucleotides (Lavery
+	    et al., 2010; Pasi et al., 2014). This data allowed to
+	    establish that tetranucleotides are the minimal-length
+	    unit of sequence required to correctly describe sequence
+	    effects on B-DNA.
+	  </p>
+	  <p>
+	    This large set of MD data, encompassing more than 9 TB of
+	    stored trajectories, and just under 36 million DNA
+	    structures, has been analysed to provide to the users of
+	    the MuG VRE a complete description of the structure and
+	    flexibility of DNA, as a function of its local
+	    tetranucleotide sequence. The results of these analyses
+	    are presented below, in the <a href="#flexibility">MuG
+	    interactive flexibility browser</a>. In particular, the
+	    conformational variations of DNA are described as a
+	    function of the well-known and widely used Curves+ helical 
+	    parameters of DNA (Lavery et al., 2009). These represent a
+	    set of independent coordinates, as a function of which
+	    averages and covariances were calculated along the
+	    microsecond MD trajectories. Results pertaining to the
+	    inter-base pair helical 
+	    parameters of the central dinucleotide of each of the 136
+	    distinct tetranucleotides are shown below.
+	  </p>
+	  <p>Average values are represented using a colour scale, in a
+	    concise representation
+	    (left) where the 136 distinct tetranucleotide sequences (of
+	    the form WXYZ) are 
+	    grouped in columns according to their central dinucleotide
+	    (XY), and in rows according to its flanking sequence
+	    (W..Z)<sup><a id="ref1" href="#fn1">1</a></sup>. The set
+	    of average values
+	    to display can be selected by clicking the
+	    image on the right.
+	    Flexibility information for each tetranucleotide appears
+	    in the lower part of the page when a coloured cell is
+	    clicked (Hospital et al., 2013). The displayed stiffness
+	    matrix is obtained by inverting diagonal 6x6 blocks of the
+	    covariance matrix. 
+	  </p> 
 	</div>
 	
 	<div id="flexibility">
-	  <h3>Average</h3>
-	  <div id="matrix">
+	  <h3>Averages</h3>
+	  <div id="heatmap">
 	    <script type="text/javascript">
-              var mat = popdda("#matrix", "abc.tsv");
+              var mat = popdda("#heatmap", "abc.tsv");
 	    </script>
 	  </div>
-	  <div id="selector">
-	    <img src="images/helicalParamsBPS.png"  align="right" border="0" usemap="#helicalParamsBPS_Map" />
+	  <div id="selector-hp" class="selector">
+	    <img src="images/helicalParamsBPS.png" border="0" usemap="#helicalParamsBPS_Map" />
 	    <br/>
 	    <br/>
-	    <span>[Image courtesy of Curves+]</span>
+	    <span class="small">[Image courtesy of Curves+]</span>
+	  </div>
+	  <div id="selector-cm"  class="selector">
+	    Change colormap<sup><a id="ref2" href="#fn2">2</a></sup>:
+	    <a class="selector-cm" href="javascript:update(null,null,'jet8');">Jet 8</a>
+	    <a class="selector-cm" href="javascript:update(null,null,'RdBu9');">RdBu 9</a>
+	    <a class="selector-cm" href="javascript:update(null,null,'BrBG10');">BrBG 10</a>
+	    <a class="selector-cm" href="javascript:update(null,null,'Spec11');">Spectral 11</a>
 	  </div>
 	</div>
 	
 	<div id="stiffness">
 	  <h3>Stiffness</h3>
+	  <div id="stiffness-external">
+	    <span class="placeholder">Stiffness information will
+	    appear here.</span>
+	  </div>
 	</div>
       </div>
 
       <map name="helicalParamsBPS_Map">
-	<area shape="rect" coords="1,0,109,87" title="Show Averages: Shift" 		href="javascript:colorby('shift', 	[-1.0, 1.0]);" />
-	<area shape="rect" coords="112,3,247,92" title="Show Averages: Slide" 	href="javascript:colorby('slide', 	[-1.5, 0.5]);" />
-	<area shape="rect" coords="248,1,377,89" title="Show Averages: Rise" 	href="javascript:colorby('rise', 	[+2.6, 3.8]);" />
-	<area shape="rect" coords="1,91,105,186" title="Show Averages: Tilt" 	href="javascript:colorby('tilt', 		[-5.0, 5.0]);" />
-	<area shape="rect" coords="108,92,246,185" title="Show Averages: Roll" 	href="javascript:colorby('roll', 	[-5.0, 15]);" />
-	<area shape="rect" coords="247,91,376,186" title="Show Averages: Twist"  href="javascript:colorby('twist', 	[+20, 40]);" />
+	<area shape="rect" coords="1,0,109,87" title="Show Averages: Shift" 		href="javascript:update('shift', 	[-1.0, 1.0]);" />
+	<area shape="rect" coords="112,3,247,92" title="Show Averages: Slide" 	href="javascript:update('slide', 	[-1.5, 0.5]);" />
+	<area shape="rect" coords="248,1,377,89" title="Show Averages: Rise" 	href="javascript:update('rise', 	[+2.6, 3.8]);" />
+	<area shape="rect" coords="1,91,105,186" title="Show Averages: Tilt" 	href="javascript:update('tilt', 		[-5.0, 5.0]);" />
+	<area shape="rect" coords="108,92,246,185" title="Show Averages: Roll" 	href="javascript:update('roll', 		[-5.0, 15]);" />
+	<area shape="rect" coords="247,91,376,186" title="Show Averages: Twist"  href="javascript:update('twist', 	[+20, 40]);" />
       </map>      
+
+      <div id="footnotes">
+	<h3>References and Footnotes</h3>
+	<ol class="publist">
+	  <li>...</li>
+	  <li>...</li>
+	  <li>...</li>
+	  <li>...</li>
+	</ol>
+	<dl>
+	  <dd><sup id="fn1">1. Missing cells in the matrix refer to
+	      tetranucleotides whose opposite strand read is present elsewhere in the matrix; e.g. CATA is missing, but TATG is present; see also Pasi <i>et al.</i>, 2015. <a href="#ref1" title="Back.">[Back]</a></sup></dd>
+	  <dd><sup id="fn2">2. Colormaps "RdBu 9", "BrBG 10", "Spectral 11" courtesy of <a href="http://colorbrewer2.org">Color Brewer 2</a>. <a href="#ref2" title="Back.">[Back]</a></sup></dd>
+	</dl>
+      </div>
       
       <!-- FOOTER: MuG info -->
       <div id="footer">
