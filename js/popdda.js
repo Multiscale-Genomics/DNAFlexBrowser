@@ -41,12 +41,21 @@ var skippers= {
         roll:  [-5.0, 15],
         twist: [+20, 40]
     },
+    srange = {                  // stiffness range
+        shift: [0.0, 1.0],
+        slide: [0.0, 3.0],
+        rise:  [0.0, 5.0],
+        tilt:  [0.0, 0.01],
+        roll:  [0.0, 0.01],
+        twist: [0.0, 0.01]
+    },
     colormaps = {
         jet8:   ["#000080","#0010ff","#00a4ff","#40ffb7","#b7ff40","#ffb900","#ff3000","#800000"],
         RdBu9:  ['#b2182b','#d6604d','#f4a582','#fddbc7','#f7f7f7','#d1e5f0','#92c5de','#4393c3','#2166ac'],
         BrBG10: ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'],
         Spec11: ['#9e0142','#d53e4f','#f46d43','#fdae61','#fee08b','#ffffbf','#e6f598','#abdda4','#66c2a5','#3288bd','#5e4fa2']
-    };
+    },
+    sizes = [0.6, 0.8, 1.0];
 colormaps.RdBu9.reverse();
 colormaps.BrBG10.reverse();
 colormaps.Spec11.reverse();
@@ -58,7 +67,7 @@ var margin = {top: 15, right: 100, bottom: 20, left: 70},
     width = (gridSize+gridPad)*10,
     height = (gridSize+gridPad)*16,
     transitionDuration = 1000, // ms
-    svg, cursorInfoCallback, vname = "twist", cname = "jet8";
+    svg, cursorInfoCallback, vname = "twist", cname = "jet8", stiffness_size = getQueryVariable("stiff");
 
 function xScale(x) {
     return +x*(gridSize+gridPad);
@@ -80,6 +89,17 @@ function unit(variable) {
     if(!(variable in unitH))
         return ""
     return unitH[variable]
+}
+
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
 }
 
 // XXX Use the function.call(instance) pattern
@@ -185,13 +205,33 @@ function popdda(id, tsv) {
             .transition().duration(transitionDuration/2)
             .style("opacity", 1)
             .text(function(d) {return d.toFixed(precision[vname]);});
-        svg.selectAll("rect.cell").transition().duration(transitionDuration)
+        var hmrects = svg.selectAll("rect.cell");
+        hmrects.transition().duration(transitionDuration)
             .style("fill", function(d) { return colorScale(+d[vname]); });
         
         // Update cursor info
         cursorInfoCallback = function(d) {
             return d[vname] + unit(vname);
         };
+        
+        if(stiffness_size) {
+            var sdomain = srange[vname];
+            var sizeScale = d3.scale.quantile()
+                .domain(sdomain)
+                .range(sizes);
+            console.log(sizeScale.quantiles());
+            var sgridSize = function(d, i) { return sizeScale(d["s"+vname])*gridSize; };
+            var sdelta = function(d) { return 0.5*(1.0-sizeScale(d["s"+vname]))*gridSize; };
+            hmrects //.transition().duration(transitionDuration)
+                .attr("width", sgridSize)
+                .attr("height", sgridSize)
+                .attr("transform", function(d, i) {
+                    return "translate("+sdelta(d)+","+sdelta(d)+")";
+                });
+            cursorInfoCallback = function(d) {
+                return d[vname] + unit(vname) + "["+d["s"+vname]+"]";
+            };
+        }
 
         return true;
     };
@@ -218,7 +258,13 @@ function popdda(id, tsv) {
         // (ab)Use accessor to filter data on input
         function(d) {
             if(d.inner < 10 && // Skip 80% of the redundancy
-               !(skippers.inner.indexOf(+d.inner) >= 0 && skippers.outer.indexOf(+d.outer) >= 0)) { 
+               !(skippers.inner.indexOf(+d.inner) >= 0 && skippers.outer.indexOf(+d.outer) >= 0)) {
+                d.sshift = Math.random()*1.0;
+                d.sslide = Math.random()*3.0;
+                d.srise  = Math.random()*5.0;
+                d.stilt  = Math.random()*0.01;
+                d.sroll  = Math.random()*0.01;
+                d.stwist = Math.random()*0.01;
                 return d;
             }
         },
@@ -249,7 +295,7 @@ function popdda(id, tsv) {
                 .attr("class","tc-tetrad");
             // Add an info text, with a callback to be used by methods
             var cursorInfo = cursor.append("text")
-                .attr("transform", "translate(0, 14)")
+                .attr("transform", "translate(0, 18)")
                 .attr("class","tc-info");
             cursorInfoCallback = function(d) { return ""; }
 
