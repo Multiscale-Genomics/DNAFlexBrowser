@@ -47,6 +47,10 @@ p {margin: 10px}
     vertical-align: middle;
 }
 
+dl.footnotes dd {
+    margin-left: 20px;
+}
+
 /* SVG */
 rect.cell {
     stroke: black;

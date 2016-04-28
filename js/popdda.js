@@ -205,15 +205,13 @@ function popdda(id, tsv) {
             .transition().duration(transitionDuration/2)
             .style("opacity", 1)
             .text(function(d) {return d.toFixed(precision[vname]);});
-        var hmrects = svg.selectAll("rect.cell");
-        hmrects.transition().duration(transitionDuration)
-            .style("fill", function(d) { return colorScale(+d[vname]); });
         
         // Update cursor info
         cursorInfoCallback = function(d) {
             return d[vname] + unit(vname);
         };
         
+        var hmrects = svg.selectAll("rect.cell");
         if(stiffness_size) {
             var sdomain = srange[vname];
             var sizeScale = d3.scale.quantile()
@@ -222,17 +220,20 @@ function popdda(id, tsv) {
             console.log(sizeScale.quantiles());
             var sgridSize = function(d, i) { return sizeScale(d["s"+vname])*gridSize; };
             var sdelta = function(d) { return 0.5*(1.0-sizeScale(d["s"+vname]))*gridSize; };
-            hmrects //.transition().duration(transitionDuration)
+            hmrects.transition().duration(transitionDuration)
                 .attr("width", sgridSize)
                 .attr("height", sgridSize)
                 .attr("transform", function(d, i) {
                     return "translate("+sdelta(d)+","+sdelta(d)+")";
-                });
+                })
+                .style("fill", function(d) { return colorScale(+d[vname]); });
             cursorInfoCallback = function(d) {
                 return d[vname] + unit(vname) + "["+d["s"+vname]+"]";
             };
+        }else{
+            hmrects.transition().duration(transitionDuration)
+                .style("fill", function(d) { return colorScale(+d[vname]); });
         }
-
         return true;
     };
     
