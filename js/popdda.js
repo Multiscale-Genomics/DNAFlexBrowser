@@ -258,8 +258,10 @@ function popdda(id, tsv) {
         tsv,
         // (ab)Use accessor to filter data on input
         function(d) {
-            if(d.inner < 10 && // Skip 80% of the redundancy
+            var din = dinucli.indexOf(dinucl[d.inner]);
+            if(din >= 0 && // Skip 80% of the redundancy
                !(skippers.inner.indexOf(+d.inner) >= 0 && skippers.outer.indexOf(+d.outer) >= 0)) {
+                d.inner  = din;
                 d.sshift = Math.random()*1.0;
                 d.sslide = Math.random()*3.0;
                 d.srise  = Math.random()*5.0;
